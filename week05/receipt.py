@@ -1,7 +1,12 @@
-"""Receipt program that reads products and creates a formatted receipt."""
+"""Receipt program that reads products and creates a formatted receipt.
+
+Enhancement: Prints a coupon at the bottom of the receipt for one randomly selected
+product that was ordered by the customer.
+"""
 
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta
+import random
 
 def main():
     """Main function that reads product and request CSV files and generates a receipt.
@@ -10,7 +15,7 @@ def main():
     and displays a formatted receipt with item details, subtotal, sales tax (6%), and total.
     Handles FileNotFoundError, PermissionError, and KeyError exceptions.
     """
-    print("========== SUPER MART ==========")
+    print("===================== SUPER MART ======================")
     print()
     try:
         KEY_INDEX = 0
@@ -22,6 +27,7 @@ def main():
             print("Item Name               Quantity    Price Per Item")
             print("-" * 55)
             subtotal = 0
+            ordered_items = []  # Track ordered items for coupon
             for row in requests:
                 product_key = row[0]
                 quantity = int(row[1])
@@ -31,6 +37,7 @@ def main():
                     price = float(product[2])
                     total_price = price * quantity
                     subtotal += total_price
+                    ordered_items.append((product_key, product_name, price))  # Track item
                     print(f"{product_name.title():<14} {quantity:>15}         ${price:.2f}")
                 else:
                     print(f"Product with key {product_key} not found.")
@@ -42,7 +49,26 @@ def main():
             print(f"Total Due:                             ${total_due:.2f}")
             print()
             print("Thank you for your purchase!")
-            print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            print(datetime.now().strftime("%B %d, %Y at %I:%M:%S %p"))
+            
+            # Generate and print a coupon for a randomly selected ordered item
+            if ordered_items:
+                coupon_item = random.choice(ordered_items)
+                coupon_key, coupon_name, coupon_price = coupon_item
+                discount_percent = 10
+                discount_amount = coupon_price * (discount_percent / 100)
+                print()
+                print("="*55)
+                print("           EXCLUSIVE COUPON - SAVE TODAY!")
+                print("="*55)
+                print(f"Product: {coupon_name.title()}")
+                print(f"Original Price: ${coupon_price:.2f}")
+                print(f"Discount: {discount_percent}% OFF")
+                print(f"Savings: ${discount_amount:.2f}")
+                print(f"New Price: ${coupon_price - discount_amount:.2f}")
+                expiration_date = (datetime.now() + timedelta(days=30)).strftime("%B %d, %Y")
+                print(f"Valid until {expiration_date}")
+                print("="*55)
     except FileNotFoundError as e:
         print(f"Error: File not found - {e}")
     except PermissionError as e:
