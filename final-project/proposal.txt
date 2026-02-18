@@ -1,0 +1,58 @@
+CSE 111 Proposal for a Student Chosen Program
+
+    (This is a proposal. All proposals are written with our best
+    knowledge at the beginning of a project. As we progress from the
+    beginning to the end of a project, we gain more knowledge, and we
+    change some of our proposed ideas. This is part of completing any
+    project and is fine.  However, we still must write a proposal so
+    that our teachers or supervisors know what we intend to do. Please
+    answer each of the following questions to the best of your
+    knowledge.)
+
+1. What is the title of your program?
+WordPress to Jekyll Database Migrator
+
+2. What real-world problem will your program address or help to solve?
+Blogging platforms often need to migrate content from WordPress to Jekyll (a static site generator). This tool automates the conversion of WordPress exported posts into properly formatted Jekyll Markdown files with YAML frontmatter, saving time and reducing manual work for content migration.
+
+3. What will you learn from developing this program?
+File I/O operations, CSV parsing and data extraction, string manipulation and Unicode normalization, regular expressions for pattern matching and slug generation, date/time handling and formatting, YAML frontmatter structure, and automation of data transformation tasks.
+
+4. What Python modules will your program use?
+
+    os, csv, datetime, re, unicodedata, shutil
+
+    (Some examples are: csv, datetime, functools, matplotlib, math,
+    pandas, pytest, random, requests, and tkinter.)
+
+5. List the names of functions you will need?
+
+    (Remember that the most reusable functions don't get user input and
+    don't print results but instead have parameters and return a result.
+    Functions that get user input and print results are important and do
+    useful work but are not easily reusable.)
+
+    (Remember also that it's hard to test functions that get user input
+    and print results. It's easy to test functions that don't get user
+    input and don't print results but instead have parameters and return
+    a result. Therefore, you should write most of your program functions
+    to have parameters and return a result.)
+
+    sanitize_slug() - Takes a string title and returns a URL-safe slug
+    read_csv_file() - Reads WordPress export CSV and returns filtered posts by category
+    process_post_row() - Processes a single post row and returns formatted post data
+    generate_frontmatter() - Takes post metadata and returns Jekyll YAML frontmatter string
+    add_dropcaps() - Adds HTML dropcaps to the first letter of content
+    format_markdown_file() - Combines frontmatter and content into complete Markdown format
+    write_markdown_file() - Takes filename and content, writes to disk
+
+6. List the names of the test functions you will write.
+    test_sanitize_slug_basic() - Test basic slug generation from titles
+    test_sanitize_slug_special_chars() - Test handling of special characters
+    test_sanitize_slug_unicode() - Test Unicode and accented character handling
+    test_sanitize_slug_spaces() - Test space-to-hyphen conversion
+    test_add_dropcaps_basic() - Test dropcaps added to first letter
+    test_add_dropcaps_empty() - Test dropcaps with empty content
+    test_generate_frontmatter_format() - Test correct YAML frontmatter format
+    test_format_markdown_file_structure() - Test complete Markdown file structure with frontmatter and content
+

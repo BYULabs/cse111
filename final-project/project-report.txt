@@ -1,0 +1,45 @@
+Student Project Report
+
+Do the following:
+
+1. In the table below, list the dates, amount of time spent, and
+description of the work that you did on your project. Follow the example
+that is in the first row of the table below. Include the time you spent
+doing any of the following:
+    a. discussing your project with your teacher, tutor, or fellow students
+    b. researching by reading articles and watching applicable videos
+    c. designing your project by drawing diagrams and other applicable documents
+    d. writing experimental code
+    d. writing code for your project
+    e. writing test functions
+    f. debugging your code
+    g. any other activity that helped you complete your project
+
+=============Example====================
+            Time Spent
+   Date       (hours)   Description of Work
+----------  ----------  -------------------------
+2021-12-03      2.5     Wrote two program functions and two test functions
+2021-12-03      .5      Watched video on 
+=============Actual Work====================
+            Time Spent
+   Date       (hours)   Description of Work
+----------  ----------  -------------------------
+2025-02-08      2.0     Research on WordPress CSV export format, Jekyll structure, and project approach. Analyzed 10-year blog post database (600+ Spanish posts). Discussed challenges with mentor.
+2025-02-09      2.5     Wrote read_csv_file() and initial post processing. Encountered first major issue: Spanish content with accents (é, ñ, á, etc.) was breaking the URL slugs for filenames.
+2025-02-10      3.0     Implemented sanitize_slug() function to handle Unicode normalization and accent removal. Debugged unicodedata.normalize('NFKD') and regex patterns for special characters. Wrote generate_frontmatter() and process_post_row().
+2025-02-11      2.5     Wrote format_markdown_file() and write_markdown_file() functions. Discovered positioning errors: frontmatter and content were not separating correctly in the markdown output. Debugged newline handling.
+2025-02-12      3.0     Fixed markdown structure by adjusting newline placement. Tested with actual Spanish blog posts - found output files were being created with content in wrong locations. Had to manually delete malformed output folders multiple times.
+2025-02-13      2.5     Implemented shutil.rmtree() and prepare_output_folder() to automatically delete and recreate output folder, eliminating manual folder cleanup. Added dropcaps HTML formatting.
+2025-02-14      2.0     Debugged regex patterns for special character handling and tested with edge cases from real Spanish content (tildes, accents, punctuation). Wrote comprehensive test suite for sanitize_slug().
+2025-02-15      2.5     Created sample-data.csv with realistic shorter content. Fixed YAML frontmatter structure - discovered date format parsing issues. Added error handling and comments to all functions.
+2025-02-16      2.0     Wrote 30 comprehensive unit tests covering all functions, edge cases, default values, and integration scenarios. Tested sanitize_slug() with Spanish text extensively.
+2025-02-17      2.0     Debugged failing tests and aligned test expectations with actual function behavior. Fixed comment status logic based on post age (90 day threshold).
+2025-02-18      1.0     Final code review and verification. All 30 tests passing. Confirmed migration workflow works end-to-end with both sample and real Spanish blog data.
+=============End Work====================
+
+
+
+2. In Canvas, submit this completed text file, your Python program, your
+Python test file, and any project data files such as .txt and .csv files and
+link to video walkthrough if needed.
